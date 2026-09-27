@@ -1,10 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="lo">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pos</title>
+    <title>POS ຫຼັງບ້ານ</title>
+    <meta name="color-scheme" content="light dark" />
+    <!-- ໃສ່ theme ກ່ອນ React ໂຫລດ → ບໍ່ກະພິບເປັນສີຂາວ (logic ດຽວກັບ src/store/themeStore.js) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme") || "system";
+          var dark = saved === "dark" || (saved === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        } catch (e) {}
+      })();
+    </script>
    <link href="https://fonts.mahidol.ac.th/phetsarath/phetsarath.css" rel="stylesheet">
   
   <style>

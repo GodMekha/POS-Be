@@ -1,9 +1,15 @@
 @import "tailwindcss";
 
-/* ໃຊ້ class .dark ເທິງ <html> ເພື່ອສະຫຼັບ theme (ThemeContext) */
+/* ໃຊ້ class .dark ເທິງ <html> ເພື່ອສະຫຼັບ theme (store/themeStore.js) */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+  :root.dark {
+    color-scheme: dark; /* date picker, <select>, scrollbar ຂອງ browser ເປັນສີມືດ */
+  }
   body {
     @apply bg-slate-50 text-slate-800 dark:bg-[#0b0f19] dark:text-slate-100;
   }
@@ -13,3 +19,6 @@
 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; }
+
+/* ປ່ຽນ theme ແບບນຸ່ມນວນ */
+body { transition: background-color 0.2s ease, color 0.2s ease; }
